@@ -11,3 +11,5 @@ $ bash build.sh
 $ bash runLite.sh
 ```
 Browse http://{IP_ADDRESS_OF_YOUR_PC}:6080/
+
+:ghost: If you are running the Gazebo first time, it could take for a long time to launch.
