@@ -35,6 +35,10 @@ RUN apt-get autoclean -y && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_config && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd 
+    
+
+RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
+    python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0
 
 
 COPY ./startup.sh /startup.sh
@@ -63,5 +67,4 @@ RUN apt-get update && \
     echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc
 
 
-RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
-    chown -R $USER:$USER $HOME/.local/
+RUN chown -R $USER:$USER $HOME/.local/
