@@ -1,4 +1,4 @@
-# orange-ros2-docker
+# orange_ros2_docker
 Distribution: ROS2 Humble Hawksbill
 
 <img src="https://user-images.githubusercontent.com/84959376/211188830-9464ddf6-5d16-43bf-908e-90e52eda350c.png" width="500px">
