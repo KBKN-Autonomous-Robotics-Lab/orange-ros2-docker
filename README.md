@@ -12,4 +12,5 @@ $ bash runLite.sh
 ```
 Browse http://{IP_ADDRESS_OF_YOUR_PC}:6080/
 ## Tips:ghost:
-- If you are running the Gazebo first time, it could take for a long time. 
+- If you are running the Gazebo first time, it could take for a long time.
+- Gazebo could show empty or even blank screen after launch. In that case, you need to re-launch orange_gazebo.
