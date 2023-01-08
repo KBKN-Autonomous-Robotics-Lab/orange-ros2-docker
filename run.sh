@@ -7,11 +7,12 @@ docker run \
 	-e HOME=/home/ubuntu \
 	-e SHELL=/bin/bash \
 	--shm-size=512m \
+        --security-opt seccomp=unconfined \
 	--entrypoint '/startup.sh' \
 	--device /dev/ZLAC8015D:/dev/ZLAC8015D:mwr \
 	--device /dev/sensors/hokuyo_urg:/dev/sensors/hokuyo_urg:mwr \
 	--device /dev/sensors/imu:/dev/sensors/imu:mwr \
 	--device /dev/input/js0:/dev/input/js0:mwr \
-	igvc2023
+	orange_ros2
 	
 	#-e RESOLUTION=1920x1080

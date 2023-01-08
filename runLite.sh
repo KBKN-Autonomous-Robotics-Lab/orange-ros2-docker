@@ -7,7 +7,8 @@ docker run \
     -e HOME=/home/ubuntu \
     -e SHELL=/bin/bash \
     --shm-size=512m \
+    --security-opt seccomp=unconfined \
     --entrypoint '/startup.sh'\
-    igvc2023
+    orange_ros2
     
     #-e RESOLUTION=1920x1080 \

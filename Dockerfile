@@ -1,10 +1,10 @@
-FROM tiryoh/ros-desktop-vnc:noetic
+FROM tiryoh/ros2-desktop-vnc:humble
  
 
 ENV DEBCONF_NOWARNINGS=yes
 ENV DEBIAN_FRONTEND noninteractive
 ENV ROS_PYTHON_VERSION 3
-ENV ROS_DISTRO=noetic
+ENV ROS_DISTRO=humble
 ENV PYTHONPATH="$PYTHONPATH:$HOME/.local/lib/python3.8/site-packages"
 
 
@@ -46,37 +46,21 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     python3-pip \
     python3-testresources \
-    gedit \
-    gimp 
+    gedit
     
    
 RUN apt-get update && \
     apt-get upgrade -y && \
-    mkdir -p /home/ubuntu/catkin_ws/src && \
-    /bin/bash -c "source /opt/ros/noetic/setup.bash; cd /home/ubuntu/catkin_ws/src; catkin_init_workspace" && \
-    /bin/bash -c "source /opt/ros/noetic/setup.bash; cd /home/ubuntu/catkin_ws; catkin build" && \
-    cd /home/ubuntu/catkin_ws/src && \
-    git clone https://github.com/KBKN-Autonomous-Robotics-Lab/IGVC2023-src.git && \
-    rm IGVC2023-src/CMakeLists.txt && \
-    mv IGVC2023-src/* . && \mv IGVC2023-src/.git* . && \
-    rm -rf IGVC2023-src && \
-    bash setup.sh && \
-    /bin/bash -c "source /opt/ros/noetic/setup.bash" && \
-    catkin clean --yes && \
+    mkdir -p ~/ros2_ws/src && \
+    cd ~/ros2_ws/src && \
+    git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
+    rosdep install -r -y -i --from-paths . && \
+    /bin/bash -c "source /opt/ros/humble/setup.bash; cd ~/ros2_ws/; colcon build" && \
     chown -R $USER:$USER $HOME && \
-    echo "source /home/ubuntu/catkin_ws/devel/setup.bash" >> ~/.bashrc && \
-    echo "export ROS_WORKSPACE=/home/ubuntu/catkin_ws" >> ~/.bashrc && \
-    echo "alias cm='cd ~/catkin_ws;catkin build'" >> ~/.bashrc && \
-    echo "alias cs='cd ~/catkin_ws/src'" >> ~/.bashrc && \
-    echo "alias cw='cd ~/catkin_ws'" >> ~/.bashrc && \
-    echo "alias start='roslaunch igvc2023 start.launch'" >> ~/.bashrc && \
-    echo "alias start_sim='roslaunch igvc2023 start_sim.launch'" >> ~/.bashrc && \
-    echo "alias buildmap='roslaunch igvc2023 buildmap_teleop_joy.launch'" >> ~/.bashrc && \
-    echo "alias savemap='rosrun map_server map_saver -f ~/catkin_ws/src/igvc2023/maps/mymap && bash ~/catkin_ws/src/igvc2023/scripts/rename.sh'" >> ~/.bashrc && \
-    echo "alias navigation='roslaunch igvc2023 waypoint_navigation.launch'" >> ~/.bashrc && \
-    echo "alias waypoint_manager='python ~/catkin_ws/src/waypoint_navigation/waypoint_manager/scripts/manager_GUI.py'" >> ~/.bashrc && \
-    echo "alias map_merger='python ~/catkin_ws/src/multi_map_manager/apps/map_merger.py'" >> ~/.bashrc && \
-    echo "alias map_trimmer='python ~/catkin_ws/src/multi_map_manager/apps/map_trimmer.py'" >> ~/.bashrc
+    echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
+    echo "alias cm='cd ~/ros2_ws;colcon build'" >> ~/.bashrc && \
+    echo "alias cs='cd ~/ros2_ws/src'" >> ~/.bashrc && \
+    echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc
 
 
 RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
