@@ -10,4 +10,4 @@ $ cd orange_ros2_docker
 $ bash build.sh
 $ bash runLite.sh
 ```
-Browse http://{IP_ADDRESS_OF_YOUR_PC}:6080/.
+Browse http://{IP_ADDRESS_OF_YOUR_PC}:6080/
