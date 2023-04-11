@@ -46,7 +46,8 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     python3-pip \
     python3-testresources \
-    gedit
+    gedit \
+    ros-humble-pcl-ros
     
     
 RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
