@@ -46,7 +46,8 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     python3-pip \
     python3-testresources \
-    gedit
+    gedit && \
+    apt-get autoclean -y && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
     
     
 RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
@@ -64,7 +65,10 @@ RUN apt-get update && \
     echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
     echo "alias cm='cd ~/ros2_ws;colcon build'" >> ~/.bashrc && \
     echo "alias cs='cd ~/ros2_ws/src'" >> ~/.bashrc && \
-    echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc
+    echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc && \
+    apt-get autoclean -y && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 
-RUN chown -R $USER:$USER $HOME/.local/
+RUN chown -R $USER:$USER $HOME/.local/ && \
+mkdir -p $HOME/.config && \
+chown -R $USER:$USER $HOME/.config/
