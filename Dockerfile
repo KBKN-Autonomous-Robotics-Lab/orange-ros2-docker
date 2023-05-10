@@ -1,5 +1,5 @@
 FROM tiryoh/ros2-desktop-vnc:humble
- 
+
 
 ENV DEBCONF_NOWARNINGS=yes
 ENV DEBIAN_FRONTEND noninteractive
@@ -19,7 +19,7 @@ EXPOSE 8308/udp
 
 RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list
 
- 
+
 RUN apt-get autoclean -y && \
     apt-get clean all -y && \
     apt-get update && \
@@ -49,12 +49,12 @@ RUN apt-get update && \
     python3-wstool \
     gedit && \
     apt-get autoclean -y && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
-    
-    
+
+
 RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
     python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0
 
-   
+
 RUN apt-get update && \
     apt-get upgrade -y && \
     mkdir -p ~/ros2_ws/src && \
