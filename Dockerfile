@@ -46,19 +46,24 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     python3-pip \
     python3-testresources \
+    python3-wstool \
     gedit && \
     apt-get autoclean -y && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
     
     
 RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
     python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0
-    
+
    
 RUN apt-get update && \
     apt-get upgrade -y && \
     mkdir -p ~/ros2_ws/src && \
+    cd ~/ros2_ws && \
+    wstool init src && \
     cd ~/ros2_ws/src && \
     git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
+    wstool merge orange_ros2/orange_ros2.rosinstall && \
+    wstool update && \
     rosdep install -r -y -i --from-paths . && \
     /bin/bash -c "source /opt/ros/humble/setup.bash; cd ~/ros2_ws/; colcon build" && \
     chown -R $USER:$USER $HOME && \
