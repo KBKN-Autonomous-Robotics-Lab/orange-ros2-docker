@@ -6,6 +6,7 @@ docker run \
 	-p 8308:8308/udp \
 	-e HOME=/home/ubuntu \
 	-e SHELL=/bin/bash \
+	--cap-add IPC_OWNER \
 	--shm-size=512m \
 	--security-opt seccomp=unconfined \
 	--entrypoint '/startup.sh' \
