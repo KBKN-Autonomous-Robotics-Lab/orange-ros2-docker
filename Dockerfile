@@ -52,7 +52,8 @@ RUN apt-get update && \
 
 
 RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
-    python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0
+    python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0 && \
+    python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pymodbus==3.2.2
 
 
 RUN apt-get update && \
