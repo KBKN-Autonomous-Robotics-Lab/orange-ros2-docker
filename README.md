@@ -1,5 +1,5 @@
 # orange_ros2_docker
-<img src="https://user-images.githubusercontent.com/84959376/211188830-9464ddf6-5d16-43bf-908e-90e52eda350c.png" width="500px">
+<img src="https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2_docker/assets/88425011/37f5c928-173b-4e74-a9b6-aab8e5493790" width="500px">
 
 orange_ros2:https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2  
 Distribution: ROS2 Humble Hawksbill
