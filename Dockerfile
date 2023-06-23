@@ -67,6 +67,7 @@ RUN apt-get update && \
     wstool update && \
     rosdep install -r -y -i --from-paths . && \
     /bin/bash -c "source /opt/ros/humble/setup.bash; cd ~/ros2_ws/; colcon build" && \
+    useradd -m ubuntu && echo "ubuntu:ubuntu" | chpasswd && \
     chown -R $USER:$USER $HOME && \
     echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
     echo "alias cm='cd ~/ros2_ws;colcon build'" >> ~/.bashrc && \
@@ -76,5 +77,5 @@ RUN apt-get update && \
 
 
 RUN chown -R $USER:$USER $HOME/.local/ && \
-mkdir -p $HOME/.config && \
-chown -R $USER:$USER $HOME/.config/
+    mkdir -p $HOME/.config && \
+    chown -R $USER:$USER $HOME/.config/
