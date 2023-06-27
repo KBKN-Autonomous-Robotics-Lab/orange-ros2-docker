@@ -27,6 +27,12 @@ RUN apt-get update && \
         supervisor wget curl gosu git sudo python3-pip tini \
         build-essential vim sudo lsb-release locales \
         bash-completion tzdata terminator && \
+    add-apt-repository ppa:mozillateam/ppa -y && \
+    echo 'Package: firefox*' > /etc/apt/preferences.d/mozillateamppa && \
+    echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozillateamppa && \
+    echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozillateamppa && \
+    apt-get update && \
+    apt-get install -y firefox && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
