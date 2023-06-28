@@ -72,6 +72,41 @@ mkdir -p $HOME/.ros
 cp -r /root/.ros/rosdep $HOME/.ros/rosdep
 chown -R $USER:$USER $HOME/.ros
 
+# Create terminator shortcut
+mkdir -p $HOME/Desktop
+cat << EOF > $HOME/Desktop/terminator.desktop
+[Desktop Entry]
+Name=Terminator
+Comment=Multiple terminals in one window
+TryExec=terminator
+Exec=terminator
+Icon=terminator
+Type=Application
+Categories=GNOME;GTK;Utility;TerminalEmulator;System;
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=terminator
+X-Ayatana-Desktop-Shortcuts=NewWindow;
+Keywords=terminal;shell;prompt;command;commandline;
+[NewWindow Shortcut Group]
+Name=Open a New Window
+Exec=terminator
+TargetEnvironment=Unity
+EOF
+
+# Create firefox shortcut
+cat << EOF > $HOME/Desktop/firefox.desktop
+[Desktop Entry]
+Name=Firefox Web Browser
+Comment=Browse the World Wide Web
+Exec=firefox
+Icon=firefox
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+Keywords=Internet;WWW;Browser;Web;Explorer
+EOF
+chown -R $USER:$USER $HOME/Desktop
+
 # clearup
 PASSWORD=
 VNC_PASSWORD=
