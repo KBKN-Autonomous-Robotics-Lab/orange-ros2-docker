@@ -88,9 +88,9 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     fi
 
 # Install orange_ros2 python dependencies
-RUN python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pip && \
-    python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0 && \
-    python3 -m pip install --user --upgrade --no-cache-dir --no-warn-script-location pymodbus==3.2.2
+RUN python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location pip && \
+    python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0 && \
+    python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location pymodbus==3.2.2
 
 # Create 'ubuntu' user and set up ros2_ws directory
 RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
