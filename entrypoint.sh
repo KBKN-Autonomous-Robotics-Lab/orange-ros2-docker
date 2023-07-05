@@ -111,12 +111,20 @@ cat << EOF > $HOME/Desktop/code.desktop
 [Desktop Entry]
 Name=Visual Studio Code
 Comment=Code Editing. Redefined.
-Exec=code
-Icon=code
-Terminal=false
+GenericName=Text Editor
+Exec=/usr/share/code/code --unity-launch %F
+Icon=vscode
 Type=Application
-Categories=Development;IDE;
+StartupNotify=false
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Actions=new-empty-window;
 Keywords=vscode;
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/share/code/code --new-window %F
+Icon=vscode
 EOF
 chown -R $USER:$USER $HOME/Desktop
 
