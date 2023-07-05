@@ -105,6 +105,19 @@ Type=Application
 Categories=Network;WebBrowser;
 Keywords=Internet;WWW;Browser;Web;Explorer
 EOF
+
+# Create VS Code shortcut
+cat << EOF > $HOME/Desktop/code.desktop
+[Desktop Entry]
+Name=Visual Studio Code
+Comment=Code Editing. Redefined.
+Exec=code
+Icon=code
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+Keywords=vscode;
+EOF
 chown -R $USER:$USER $HOME/Desktop
 
 # clearup
