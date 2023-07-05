@@ -15,7 +15,7 @@ RUN apt-get update -q && \
 # Install Ubuntu Mate desktop
 RUN apt-get update -q && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        ubuntu-mate-desktop && \
+    ubuntu-mate-desktop && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -23,10 +23,10 @@ RUN apt-get update -q && \
 # Add Package
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        tigervnc-standalone-server tigervnc-common \
-        supervisor wget curl gosu git sudo python3-pip tini \
-        build-essential vim sudo lsb-release locales \
-        bash-completion tzdata terminator && \
+    tigervnc-standalone-server tigervnc-common \
+    supervisor wget curl gosu git sudo python3-pip tini \
+    build-essential vim sudo lsb-release locales \
+    bash-completion tzdata terminator && \
     add-apt-repository ppa:mozillateam/ppa -y && \
     echo 'Package: firefox*' > /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozillateamppa && \
