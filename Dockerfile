@@ -31,8 +31,11 @@ RUN apt-get update && \
     echo 'Package: firefox*' > /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozillateamppa && \
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+    mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
+    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' && \
     apt-get update && \
-    apt-get install -y firefox && \
+    apt-get install -y firefox code && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
