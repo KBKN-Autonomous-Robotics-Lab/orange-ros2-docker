@@ -103,9 +103,8 @@ USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws/src
 RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
     wstool init . && \
-    wstool merge orange_ros2/orange_ros2.rosinstall && \
-    wstool merge icm_20948/icm_20948.rosinstall && \
-    wstool update
+    wstool merge orange_ros2/orange_ros2.rosinstall && wstool update && \
+    wstool merge icm_20948/icm_20948.rosinstall && wstool update
 
 # Switch to 'root' user for rosdep install
 USER root
