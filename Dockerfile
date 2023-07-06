@@ -15,7 +15,7 @@ RUN apt-get update -q && \
 # Install Ubuntu Mate desktop
 RUN apt-get update -q && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        ubuntu-mate-desktop && \
+    ubuntu-mate-desktop && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -23,16 +23,19 @@ RUN apt-get update -q && \
 # Add Package
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        tigervnc-standalone-server tigervnc-common \
-        supervisor wget curl gosu git sudo python3-pip tini \
-        build-essential vim sudo lsb-release locales \
-        bash-completion tzdata terminator && \
+    tigervnc-standalone-server tigervnc-common \
+    supervisor wget curl gosu git sudo python3-pip tini \
+    build-essential vim sudo lsb-release locales \
+    bash-completion tzdata terminator && \
     add-apt-repository ppa:mozillateam/ppa -y && \
     echo 'Package: firefox*' > /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozillateamppa && \
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+    mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
+    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' && \
     apt-get update && \
-    apt-get install -y firefox && \
+    apt-get install -y firefox code && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -103,8 +106,8 @@ USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws/src
 RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
     wstool init . && \
-    wstool merge orange_ros2/orange_ros2.rosinstall && \
-    wstool update
+    wstool merge orange_ros2/orange_ros2.rosinstall && wstool update && \
+    wstool merge icm_20948/icm_20948.rosinstall && wstool update
 
 # Switch to 'root' user for rosdep install
 USER root
