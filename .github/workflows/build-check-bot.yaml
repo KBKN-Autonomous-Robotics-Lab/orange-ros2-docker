@@ -1,6 +1,8 @@
-name: Build Check Bot
+name: Docker Build Check
 on:
   pull_request:
+  schedule:
+    - cron: '0 23 * * *'
 
 jobs:
   docker:
