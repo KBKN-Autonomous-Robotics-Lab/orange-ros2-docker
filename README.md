@@ -7,7 +7,13 @@ Distribution: `ROS2 Humble Hawksbill`
 
 <img src="https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2_docker/assets/84959376/1e21ca28-5208-4993-91c4-928003c13f5c" width="500px">
 
-## Quick start
+## Quick start:rocket:
+```
+$ docker pull kbkn202x/orange_ros2:latest
+$ docker run -p 6080:80 --shm-size=512m --security-opt seccomp=unconfined kbkn202x/orange_ros2:latest
+```
+
+## Build from Dockerfile:wrench:
 ```
 $ git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2_docker.git
 $ cd orange_ros2_docker
