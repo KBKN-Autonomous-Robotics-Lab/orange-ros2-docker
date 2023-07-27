@@ -1,4 +1,4 @@
-# orange_ros2_docker
+# orange_ros2_docker [![Docker Build Check](https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2_docker/actions/workflows/build-check-bot.yaml/badge.svg?event=schedule)](https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2_docker/actions/workflows/build-check-bot.yaml)
 
 [![dockeri.co](https://dockerico.blankenship.io/image/kbkn202x/orange_ros2)](https://hub.docker.com/r/kbkn202x/orange_ros2)
 
