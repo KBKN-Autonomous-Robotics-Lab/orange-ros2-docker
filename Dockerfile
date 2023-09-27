@@ -116,6 +116,14 @@ RUN apt-get update && \
     rosdep install -r -y -i --from-paths /home/ubuntu/ros2_ws/src --rosdistro=${ROS_DISTRO} && \
     rm -rf /var/lib/apt/lists/*
 
+# orange_navigation App
+RUN cd /home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager && \
+    python3 -m venv venv && \
+    source venv/bin/activate && \
+    pip install -r requirements.txt && \
+    deactivate && \
+    echo "alias waypoint_manager='home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager/run_app.sh'" >> ~/.bashrc
+
 # Build
 USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws
