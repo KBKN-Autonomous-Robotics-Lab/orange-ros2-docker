@@ -122,7 +122,7 @@ RUN cd /home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager && \
     source venv/bin/activate && \
     pip install -r requirements.txt && \
     deactivate && \
-    echo "alias waypoint_manager='home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager/run_app.sh'" >> ~/.bashrc
+    echo "alias waypoint_manager='/home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager/run_app.sh'" >> ~/.bashrc
 
 # Build
 USER ubuntu
