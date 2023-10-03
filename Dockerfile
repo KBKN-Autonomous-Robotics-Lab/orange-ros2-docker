@@ -90,10 +90,16 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     rm -rf /var/lib/apt/lists/*; \
     fi
 
-# Install orange_ros2 python dependencies
-RUN python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location pip && \
-    python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location setuptools==58.2.0 && \
-    python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location pymodbus==3.2.2
+# Install orange_ros2 and waypoint_manager App python dependencies
+RUN python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location \
+    pip \
+    setuptools==58.2.0 \
+    pymodbus==3.2.2 \
+    numpy==1.24.4 \
+    numpy-quaternion==2022.4.3 \
+    Pillow==9.5.0 \
+    ruamel.yaml==0.17.32 \
+    ruamel.yaml.clib==0.2.7
 
 # Create 'ubuntu' user and set up ros2_ws directory
 RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
@@ -125,7 +131,8 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash; colcon build"
 RUN echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
     echo "alias cm='cd ~/ros2_ws;colcon build;source ~/.bashrc'" >> ~/.bashrc && \
     echo "alias cs='cd ~/ros2_ws/src'" >> ~/.bashrc && \
-    echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc
+    echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc && \
+    echo "alias waypoint_manager='python3 /home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager/manager_GUI.py'" >> ~/.bashrc
 
 # Switch back to 'root' user
 USER root
