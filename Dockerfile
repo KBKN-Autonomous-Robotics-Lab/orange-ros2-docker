@@ -134,7 +134,9 @@ RUN echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
     echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc && \
     echo "alias waypoint_manager='python3 /home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager/manager_GUI.py'" >> ~/.bashrc && \
     echo "alias map_merger='python3 /home/ubuntu/ros2_ws/src/multi_map_manager/map_merger/map_merger.py'" >> ~/.bashrc && \
-    echo "alias map_trimmer='python3 /home/ubuntu/ros2_ws/src/multi_map_manager/map_merger/map_trimmer.py'" >> ~/.bashrc
+    echo "alias map_trimmer='python3 /home/ubuntu/ros2_ws/src/multi_map_manager/map_merger/map_trimmer.py'" >> ~/.bashrc && \
+    echo "alias start_right='ros2 launch orange_navigation multi_map_navigation.launch.xml start_position:=right'" >> ~/.bashrc && \
+    echo "alias start_left='ros2 launch orange_navigation multi_map_navigation.launch.xml start_position:=left'" >> ~/.bashrc
 
 # Switch back to 'root' user
 USER root
