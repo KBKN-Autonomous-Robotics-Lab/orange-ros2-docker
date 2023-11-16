@@ -110,7 +110,7 @@ RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubunt
 # Clone and build orange_ros2 package as 'ubuntu' user
 USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws/src
-RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
+RUN git clone -b devel/tsukuba2023_Senior https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git && \
     wstool init . && \
     wstool merge orange_ros2/orange_ros2.rosinstall && wstool update && \
     wstool merge icm_20948/icm_20948.rosinstall && wstool update
