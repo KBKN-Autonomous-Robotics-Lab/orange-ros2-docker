@@ -15,7 +15,7 @@ RUN apt-get update -q && \
 # Install Ubuntu Mate desktop
 RUN apt-get update -q && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    ubuntu-mate-desktop && \
+    ubuntu-mate-desktop \
     gimp && \
     apt-get autoclean && \
     apt-get autoremove && \
