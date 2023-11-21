@@ -15,8 +15,7 @@ RUN apt-get update -q && \
 # Install Ubuntu Mate desktop
 RUN apt-get update -q && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    ubuntu-mate-desktop \
-    gimp && \
+    ubuntu-mate-desktop && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -37,6 +36,7 @@ RUN apt-get update && \
     sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' && \
     apt-get update && \
     apt-get install -y firefox code && \
+    apt-get install gimp && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
