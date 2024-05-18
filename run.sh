@@ -9,10 +9,10 @@ docker run \
 	--device /dev/ZLAC8015D:/dev/ZLAC8015D:mwr \
 	--device /dev/sensors/hokuyo_urg:/dev/sensors/hokuyo_urg:mwr \
 	--device /dev/sensors/imu:/dev/sensors/imu:mwr \
-        --device /dev/sensors/estop:/dev/sensors/estop:mwr \
+	--device /dev/sensors/estop:/dev/sensors/estop:mwr \
 	--device /dev/input/js0:/dev/input/js0:mwr \
-        --device /dev/input/js1:/dev/input/js1:mwr \
-	kbkn202x/orange_ros2:latest
+	--device /dev/input/js1:/dev/input/js1:mwr \
+ 	kbkn202x/orange_ros2:latest
 	
 	#-e RESOLUTION=1920x1080
  #js0;DualSense Controller
