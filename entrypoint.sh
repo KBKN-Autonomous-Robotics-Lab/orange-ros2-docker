@@ -126,6 +126,20 @@ Name=New Empty Window
 Exec=/usr/share/code/code --new-window %F
 Icon=vscode
 EOF
+
+# Create gimp shortcut
+cat << EOF > $HOME/Desktop/gimp.desktop
+[Desktop Entry]
+Name=GNU Image Manipulation Program
+Comment=Image editing and manipulation program
+Exec=gimp
+Icon=gimp
+Terminal=false
+Type=Application
+Categories=Graphics;ImageEditing;
+Keywords=Image;Editing;GIMP;
+EOF
+
 chown -R $USER:$USER $HOME/Desktop
 
 # clearup
