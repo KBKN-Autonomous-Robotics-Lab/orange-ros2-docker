@@ -26,7 +26,8 @@ RUN apt-get update && \
     tigervnc-standalone-server tigervnc-common \
     supervisor wget curl gosu git sudo python3-pip tini \
     build-essential vim sudo lsb-release locales \
-    bash-completion tzdata terminator && \
+    bash-completion tzdata terminator \
+    iputils-ping net-tools && \
     add-apt-repository ppa:mozillateam/ppa -y && \
     echo 'Package: firefox*' > /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozillateamppa && \
@@ -114,6 +115,11 @@ RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git &&
     wstool init . && \
     wstool merge orange_ros2/orange_ros2.rosinstall && wstool update && \
     wstool merge icm_20948/icm_20948.rosinstall && wstool update
+
+# Clone livox_ros_driver2 package and setup ip address
+RUN git clone https://github.com/Ericsii/livox_ros_driver2.git && \
+    sed -i "s/192.168.1.5/192.168.3.1/g" ~/ros2_ws/src/livox_ros_driver2/config/MID360_config.json && \
+    sed -i "s/192.168.1.12/192.168.3.201/g" ~/ros2_ws/src/livox_ros_driver2/config/MID360_config.json 
 
 # Switch to 'root' user for rosdep install
 USER root
