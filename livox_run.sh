@@ -1,11 +1,5 @@
 sudo docker run \
     --privileged -it \
-    -p 6080:80 \
-    -p 2222:22 \
-    -p 10940:10940 \
-    -p 2368:2368/udp \
-    -p 8308:8308/udp \
-    -p 56000:56000/udp \
     --ipc host \
     --net host \
     --shm-size=512m \
@@ -19,5 +13,11 @@ sudo docker run \
 #   -e RESOLUTION=1920x1080
 #   js0;DualSense Controller
 #   js1;DualSense trackpad
+#   -p 6080:80
+#   -p 2222:22
+#   -p 10940:10940
+#   -p 2368:2368/udp
+#   -p 8308:8308/udp
+#   -p 56000:56000/udp
 #	--device /dev/sensors/imu:/dev/sensors/imu:mwr
 #	--device /dev/ttyUSB0:/dev/ttyUSB0:mwr
