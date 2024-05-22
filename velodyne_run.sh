@@ -14,6 +14,6 @@ docker run \
 	--device /dev/input/js1:/dev/input/js1:mwr \
  	kbkn202x/orange_ros2:latest
 	
-#-e RESOLUTION=1920x1080
-#js0;DualSense Controller
-#js1;DualSense trackpad
+#   -e RESOLUTION=1920x1080
+#   js0;DualSense Controller
+#   js1;DualSense trackpad
