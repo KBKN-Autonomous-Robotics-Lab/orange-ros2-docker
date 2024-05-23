@@ -8,4 +8,4 @@ docker run \
     --security-opt seccomp=unconfined \
     kbkn202x/orange_ros2:latest
     
-    #-e RESOLUTION=1920x1080 \
+#   -e RESOLUTION=1920x1080
