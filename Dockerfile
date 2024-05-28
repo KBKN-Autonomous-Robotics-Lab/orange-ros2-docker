@@ -116,10 +116,12 @@ RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2.git &&
     wstool merge orange_ros2/orange_ros2.rosinstall && wstool update && \
     wstool merge icm_20948/icm_20948.rosinstall && wstool update
 
-# Clone livox_ros_driver2 package and setup ip address
-RUN git clone https://github.com/Ericsii/livox_ros_driver2.git && \
-    sed -i "s/192.168.1.5/192.168.3.1/g" ~/ros2_ws/src/livox_ros_driver2/config/MID360_config.json && \
-    sed -i "s/192.168.1.12/192.168.3.201/g" ~/ros2_ws/src/livox_ros_driver2/config/MID360_config.json 
+# Clone packages related to livox and setup ip address
+RUN mkdir livox && cd livox && \
+    git clone https://github.com/Ericsii/livox_ros_driver2.git && \
+    git clone https://github.com/porizou/livox_to_pointcloud2.git && \
+    sed -i "s/192.168.1.5/192.168.3.1/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json && \
+    sed -i "s/192.168.1.12/192.168.3.201/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json 
 
 # Switch to 'root' user for rosdep install
 USER root
