@@ -1,5 +1,4 @@
 sudo docker run \
-    --privileged -it \
     --ipc host \
     --net host \
     --shm-size=512m \
