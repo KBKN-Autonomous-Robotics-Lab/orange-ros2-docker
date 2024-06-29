@@ -13,14 +13,17 @@ $ docker pull kbkn202x/orange_ros2:latest
 $ docker run -p 6080:80 --shm-size=512m --security-opt seccomp=unconfined kbkn202x/orange_ros2:latest
 ```
 
-## Build from Dockerfile🔧
+## Build from Dockerfile (recommendation)🔧
 ```
 $ git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange_ros2_docker.git
 $ cd orange_ros2_docker
 $ bash build.sh
-$ bash runLite.sh
+$ bash livox_runLite.sh
 ```
-Browse http://{IP_ADDRESS_OF_YOUR_PC}:6080/
+> [!IMPORTANT]
+> Execute `bash build.sh` to build the docker image, which may take several hours.
+> Create a docker container by running `bash livox_runLite.sh`. Now you can access http://{IP_ADDRESS_OF_YOUR_PC}:6080/ in your browser.
+
 ## Tips👻
 - If you are running the Gazebo first time, it could take for a long time.
 - Gazebo could show empty or even blank screen after launch. In that case, you need to re-launch orange_gazebo.
