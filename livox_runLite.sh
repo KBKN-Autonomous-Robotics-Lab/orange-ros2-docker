@@ -1,5 +1,4 @@
 sudo docker run \
-    --privileged -it \
     --ipc host \
     --net host \
     --shm-size=512m \
@@ -13,3 +12,6 @@ sudo docker run \
 #   -p 2368:2368/udp
 #   -p 8308:8308/udp
 #   -p 56000:56000/udp
+#   --device /dev/webcam:/dev/webcam:mwr \
+#   --device /dev/ZLAC8015D:/dev/ZLAC8015D:mwr \
+#   --device /dev/webcam2:/dev/webcam2:mwr \
