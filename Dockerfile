@@ -27,7 +27,8 @@ RUN apt-get update && \
     supervisor wget curl gosu git sudo python3-pip tini \
     build-essential vim sudo lsb-release locales \
     bash-completion tzdata terminator \
-    iputils-ping net-tools && \
+    iputils-ping net-tools \
+    joystick jstest-gtk && \
     add-apt-repository ppa:mozillateam/ppa -y && \
     echo 'Package: firefox*' > /etc/apt/preferences.d/mozillateamppa && \
     echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozillateamppa && \
@@ -100,7 +101,8 @@ RUN python3 -m pip install --upgrade --no-cache-dir --no-warn-script-location \
     numpy-quaternion==2022.4.3 \
     Pillow==9.5.0 \
     ruamel.yaml==0.17.32 \
-    ruamel.yaml.clib==0.2.7
+    ruamel.yaml.clib==0.2.7 \
+    transforms3d==0.4.2
 
 # Create 'ubuntu' user and set up ros2_ws directory
 RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
@@ -140,6 +142,7 @@ RUN echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
     echo "alias cm='cd ~/ros2_ws;colcon build;source ~/.bashrc'" >> ~/.bashrc && \
     echo "alias cs='cd ~/ros2_ws/src'" >> ~/.bashrc && \
     echo "alias cw='cd ~/ros2_ws'" >> ~/.bashrc && \
+    echo "alias sbc='source ~/.bashrc'" >> ~/.bashrc && \
     echo "alias waypoint_manager='python3 /home/ubuntu/ros2_ws/src/orange_navigation/waypoint_manager/manager_GUI.py'" >> ~/.bashrc && \
     echo "alias map_merger='python3 /home/ubuntu/ros2_ws/src/multi_map_manager/map_merger/map_merger.py'" >> ~/.bashrc && \
     echo "alias map_trimmer='python3 /home/ubuntu/ros2_ws/src/multi_map_manager/map_merger/map_trimmer.py'" >> ~/.bashrc
