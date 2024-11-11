@@ -1,4 +1,13 @@
+# Check if the name for a container is provided or not
+if [ -z "$1" ]; then
+    echo "Error: You must specify the container name as the first argument."
+    exit 1
+fi
+
+CONTAINER_NAME=$1
+
 sudo docker run \
+    --name "$CONTAINER_NAME" \
     --ipc host \
     --net host \
     --shm-size=512m \
