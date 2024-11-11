@@ -1,4 +1,4 @@
-# Check if the name for a container is provided or not
+# Check if a name container is provided or not
 if [ -z "$1" ]; then
     echo "Error: You must specify the container name as the first argument."
     exit 1
